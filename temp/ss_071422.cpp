@@ -9,7 +9,7 @@ void Parse( std::string cmd );
 template< class type_All >
 int ArraySize( type_All array[] );
 void EmitError( std::string error );
-void EmitErrorFatal( std::string error );
+void EmitErrorFatal( std::string error, int errorc );
 
 bool RUN;
 
@@ -20,6 +20,7 @@ typedef struct ConCmd_s { // console command
     std::string arg[ 4 ]; // argument list
     std::string helpstring; // command help text
 } ConCmd;
+
 typedef struct Prgm_s { // program
     std::string name; // program string name
     std::string cmdname; // program cmd name
@@ -33,6 +34,7 @@ ConCmd ConCmdList[ 2 ] = {
     ConCmd{ "quit", SS_NONE, 0, "", "Quit the program" },
     ConCmd{ "help", SS_NONE, 0, "", "See a list of commands or specific help for certain commands" }
 };
+
 Prgm PrgmList[ 2 ] = {
     Prgm{ "Calculator", "calculator", SS_STR, 4, { "", "", "", "" }, "Standard implementation of a calculator"  },
     Prgm{ "DEBUGTEST", "test", SS_NONE, 0, "", "DEBUG TEST" }
@@ -80,7 +82,7 @@ void Parse( std::string cmd ) {
             }
         }
     }
-    if( ListCheck = 0 ) {
+    if( ListCheck == 0 ) {
         switch( ListPos ) {
             case 0:
                 std::cout<<"Quitting..."<<std::endl;
@@ -92,7 +94,7 @@ void Parse( std::string cmd ) {
             default:
                 break;
         }
-    } else if( ListCheck = 1 ) {
+    } else if( ListCheck == 1 ) {
         switch( ListPos ) {
             case 0:
                 std::cout<<"Calculator opened"<<std::endl;
@@ -116,9 +118,9 @@ void EmitError( std::string error ) {
     std::cout<<std::endl;
     std::cout<<"Error: "<<error<<std::endl;
 }
-void EmitErrorFatal( std::string error ) {
+void EmitErrorFatal( std::string error, int errorc ) {
     std::cout<<std::endl;
     std::cout<<"Fatal error: "<<error<<std::endl;
     std::cout<<"System has paused. We are hanging here";
-    std::exit( 1 );
+    std::exit( errorc );
 }
