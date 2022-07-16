@@ -59,13 +59,15 @@ int main( void ) {
 }
 void Parse( std::string cmd ) {
     // TODO split into arguments
+    /*
     if( cmd.find( " " ) != std::string::npos ) {
         std::string cmd_tmp = cmd.substr( 0, cmd.find( " " ) );
-        std::string cmd_arg1 = cmd.substr( cmd.find( " " ), cmd.find( " " )+1 );
-        std::string cmd_arg2 = cmd.substr( cmd.find( " " )+1, cmd.find( " " )+2 );
-        std::string cmd_arg3 = cmd.substr( cmd.find( " " )+2, cmd.find( " " )+3 );
-        std::string cmd_arg4 = cmd.substr( cmd.find( " " )+3, cmd.find( " " )+4 );
+        std::string cmd_arg1 = cmd.substr( cmd.find( " " ), cmd.find( " " + 1 ) );
+        std::string cmd_arg2 = cmd.substr( cmd.find( " " + 1 ), cmd.find( " " + 2 ) );
+        std::string cmd_arg3 = cmd.substr( cmd.find( " " + 2 ), cmd.find( " " + 3 ) );
+        std::string cmd_arg4 = cmd.substr( cmd.find( " " + 3 ), cmd.find( " " + 4 ) );
     }
+    */
     bool CmdFound = false;
     int ListPos = -1;
     int ListCheck = -1; // 0 = console command, 1 = program command
